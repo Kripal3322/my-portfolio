@@ -65,15 +65,6 @@ export default function Navbar() {
             <FaLinkedin size={20} />
           </a>
 
-          <a
-            href="/resume/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-white transition hover:bg-sky-400"
-          >
-            Resume
-          </a>
-
           <button
             type="button"
             aria-label="Theme"
@@ -131,15 +122,6 @@ export default function Navbar() {
                 className="text-gray-300 hover:text-sky-400"
               >
                 <FaLinkedin size={21} />
-              </a>
-
-              <a
-                href="/resume/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-white"
-              >
-                Resume
               </a>
 
             </div>
