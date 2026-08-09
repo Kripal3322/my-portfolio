@@ -38,9 +38,9 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="bg-[#030712] px-6 py-24 text-white"
+      className="w-full overflow-hidden bg-[#030712] px-4 py-24 text-white sm:px-6"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto w-full max-w-6xl">
 
         <div className="mb-12">
           <p className="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-sky-400">
