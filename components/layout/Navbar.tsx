@@ -1,97 +1,151 @@
+"use client";
+
 import Link from "next/link";
-import { Moon } from "lucide-react";
+import { Moon, Menu, X } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const links = [
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Experience", href: "#experience" },
+    { name: "Education", href: "#education" },
+    { name: "Contact", href: "#contact" },
+  ];
+
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-gray-800 bg-black/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-4">
+    <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#030712]/80 backdrop-blur-xl">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
 
         {/* Logo */}
         <Link
-          href="/"
-          className="text-2xl font-bold text-white transition hover:text-blue-400"
+          href="#home"
+          className="text-xl font-bold text-white transition hover:text-sky-400 sm:text-2xl"
         >
           {"<KN />"}
         </Link>
 
-        {/* Navigation Links */}
-        <ul className="hidden items-center gap-8 text-gray-300 md:flex">
-          <li>
-            <a href="#about" className="transition hover:text-blue-400">
-              About
+        {/* Desktop Navigation */}
+        <div className="hidden items-center gap-6 lg:flex">
+          {links.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-sm text-gray-300 transition hover:text-sky-400"
+            >
+              {link.name}
             </a>
-          </li>
+          ))}
+        </div>
 
-          <li>
-            <a href="#skills" className="transition hover:text-blue-400">
-              Skills
-            </a>
-          </li>
-
-          <li>
-            <a href="#projects" className="transition hover:text-blue-400">
-              Projects
-            </a>
-          </li>
-
-          <li>
-            <a href="#experience" className="transition hover:text-blue-400">
-              Experience
-            </a>
-          </li>
-
-          <li>
-            <a href="#education" className="transition hover:text-blue-400">
-              Education
-            </a>
-          </li>
-
-          <li>
-            <a href="#contact" className="transition hover:text-blue-400">
-              Contact
-            </a>
-          </li>
-        </ul>
-
-        {/* Right Side */}
-        <div className="flex items-center gap-5">
+        {/* Desktop Right Side */}
+        <div className="hidden items-center gap-4 lg:flex">
 
           <a
             href="https://github.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 transition hover:text-white"
+            aria-label="GitHub"
+            className="text-gray-300 transition hover:scale-110 hover:text-white"
           >
-            <FaGithub size={22} />
+            <FaGithub size={20} />
           </a>
 
           <a
-            href="https://linkedin.com/"
+            href="https://www.linkedin.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 transition hover:text-blue-400"
+            aria-label="LinkedIn"
+            className="text-gray-300 transition hover:scale-110 hover:text-sky-400"
           >
-            <FaLinkedin size={22} />
+            <FaLinkedin size={20} />
           </a>
 
           <a
             href="/resume/resume.pdf"
             target="_blank"
-            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
+            rel="noopener noreferrer"
+            className="rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-white transition hover:bg-sky-400"
           >
             Resume
           </a>
 
           <button
-            className="rounded-full p-2 text-gray-300 transition hover:bg-gray-800 hover:text-white"
-            aria-label="Toggle Theme"
+            type="button"
+            aria-label="Theme"
+            className="rounded-full p-2 text-gray-300 transition hover:bg-white/10 hover:text-white"
           >
-            <Moon size={20} />
+            <Moon size={19} />
           </button>
-
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="rounded-lg p-2 text-gray-300 transition hover:bg-white/10 lg:hidden"
+        >
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="border-t border-white/10 bg-[#030712]/95 px-6 py-6 lg:hidden">
+
+          <div className="flex flex-col gap-5">
+
+            {links.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="text-base text-gray-300 transition hover:text-sky-400"
+              >
+                {link.name}
+              </a>
+            ))}
+
+            <div className="flex items-center gap-5 border-t border-white/10 pt-5">
+
+              <a
+                href="https://github.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="text-gray-300 hover:text-white"
+              >
+                <FaGithub size={21} />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-gray-300 hover:text-sky-400"
+              >
+                <FaLinkedin size={21} />
+              </a>
+
+              <a
+                href="/resume/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-white"
+              >
+                Resume
+              </a>
+
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
