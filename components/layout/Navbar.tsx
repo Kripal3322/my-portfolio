@@ -45,8 +45,9 @@ export default function Navbar() {
         {/* Desktop Right Side */}
         <div className="hidden items-center gap-4 lg:flex">
 
+          {/* GitHub */}
           <a
-            href="https://github.com/"
+            href="https://github.com/Kripal3322"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -55,6 +56,7 @@ export default function Navbar() {
             <FaGithub size={20} />
           </a>
 
+          {/* LinkedIn */}
           <a
             href="https://www.linkedin.com/in/kripal-naidu-192945374/"
             target="_blank"
@@ -65,6 +67,17 @@ export default function Navbar() {
             <FaLinkedin size={20} />
           </a>
 
+          {/* Resume */}
+          <a
+            href="/resume/My%20Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-white transition hover:-translate-y-1 hover:bg-sky-400"
+          >
+            Resume
+          </a>
+
+          {/* Theme */}
           <button
             type="button"
             aria-label="Theme"
@@ -88,7 +101,6 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="border-t border-white/10 bg-[#030712]/95 px-6 py-6 lg:hidden">
-
           <div className="flex flex-col gap-5">
 
             {links.map((link) => (
@@ -102,10 +114,21 @@ export default function Navbar() {
               </a>
             ))}
 
+            {/* Mobile Resume */}
+            <a
+              href="/resume/My%20Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="w-fit rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-white transition hover:bg-sky-400"
+            >
+              Resume
+            </a>
+
             <div className="flex items-center gap-5 border-t border-white/10 pt-5">
 
               <a
-                href="https://github.com/"
+                href="https://github.com/Kripal3322"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -115,7 +138,7 @@ export default function Navbar() {
               </a>
 
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/kripal-naidu-192945374/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
